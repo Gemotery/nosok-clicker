@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Кликер Носка</title> 
+  <link rel="stylesheet" href="styles.css"> 
+ <style type="text/css" id="dcoder_stylesheet">body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.hamster-container {
+    display: inline-block;
+    position: relative;
+}
+
+#hamster {
+    width: 200px; /* Ширина изображения */
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#hamster:hover {
+    transform: scale(1.1); /* Увеличение при наведении */
+}
+
+.stats {
+    margin-top: 20px;
+    font-size: 24px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.stats p {
+    margin: 5px 0;
+}</style></head> 
+ <body> 
+  <div class="container"> 
+   <h1>Тыкай на носка</h1> 
+   <div class="hamster-container"> 
+    <img id="hamster" src="https://raw.githubusercontent.com/Gemotery/pngna/refs/heads/main/-5355047731430814820_120.jpg" alt="Хомяк"> 
+   </div> 
+   <div class="stats"> 
+    <p>Клики: <span id="click-count">0</span></p> 
+    <p>Энергия: <span id="energy">0</span></p> 
+   </div> 
+  </div> 
+  <script src="script.js"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">// Получаем элемент, который отображает количество кликов
+const clickCountElement = document.getElementById('click-count');
+// Определяем переменную для хранения количества кликов
+let clickCount = localStorage.getItem('clickCount') ? parseInt(localStorage.getItem('clickCount')) : 0;
+
+// Обновляем текст на экране
+clickCountElement.textContent = clickCount;
+
+// Функция для обработки клика
+function handleClick() {
+    clickCount++;
+    clickCountElement.textContent = clickCount;
+    localStorage.setItem('clickCount', clickCount); // Сохраняем количество кликов в локальном хранилище
+}
+
+// Добавляем обработчик события для клика по изображению хомяка
+document.getElementById('hamster').addEventListener('click', handleClick);</script></body></html>
